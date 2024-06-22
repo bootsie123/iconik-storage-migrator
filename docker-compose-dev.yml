@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  redis:
+    image: bitnami/redis:latest
+    volumes:
+      - redis_data:/bitnami/redis/data
+    environment:
+      ALLOW_EMPTY_PASSWORD: yes
+    ports:
+      - "6379:6379"
+  app:
+    build:
+      context: ./
+      target: development
+    environment:
+      ICONIK_APP_ID:
+      ICONIK_TOKEN:
+      NEW_STORAGE_ID:
+      ADD_JOBS:
+      REDIS_HOST: localhost
+      REDIS_PORT:
+      DRY_RUN: true
+
+volumes:
+  redis_data:
