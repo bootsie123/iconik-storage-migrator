@@ -54,6 +54,14 @@ process
   .on("SIGTERM", gracefulShutdown)
   .on("SIGINT", gracefulShutdown);
 
-if (environment.addJobs) {
-  QueueService.addProxyMigrationJobs();
-}
+(async () => {
+  QueueService.startBullBoard();
+
+  if (environment.bullmq.resetQueues) {
+    await QueueService.resetQueues();
+  }
+
+  if (environment.addJobs) {
+    await QueueService.addProxyMigrationJobs();
+  }
+})();

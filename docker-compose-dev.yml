@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   redis:
     image: bitnami/redis:latest
@@ -20,7 +18,11 @@ services:
       ADD_JOBS:
       REDIS_HOST: localhost
       REDIS_PORT:
+      BULLMQ_PORT:
+      BULLMQ_RESET_QUEUES:
       DRY_RUN: true
+    ports:
+      - "3000:3000"
 
 volumes:
   redis_data:
