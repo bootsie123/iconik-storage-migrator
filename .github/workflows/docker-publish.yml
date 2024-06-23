@@ -3,11 +3,11 @@ name: Docker Publish
 on:
   push:
     branches:
-      - "master"
+      - "main"
   workflow_dispatch:
   pull_request:
     branches:
-      - "master"
+      - "main"
 
 env:
   REGISTRY: ghcr.io
