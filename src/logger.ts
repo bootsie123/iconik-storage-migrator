@@ -1,5 +1,4 @@
 import { createLogger, format, transports } from "winston";
-import { setGlobalConfig } from "axios-logger";
 import stringify from "fast-safe-stringify";
 
 import environment from "./environment";
@@ -13,18 +12,7 @@ const logger = createLogger({
   transports: []
 });
 
-setGlobalConfig({
-  data: false,
-  dateFormat: "isoDateTime"
-});
-
 if (!environment.production) {
-  setGlobalConfig({
-    headers: true,
-    params: true,
-    data: true
-  });
-
   logger.add(
     new transports.Console({
       level: "debug",
