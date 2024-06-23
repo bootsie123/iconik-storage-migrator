@@ -91,7 +91,7 @@ export default class QueueService {
     };
 
     const addJobs = (data: iconik.SearchDocumentsSchema) => {
-      const jobs = data.objects?.map(item => ({
+      const jobs = data.objects?.map((item: any) => ({
         name: "migrateProxy",
         data: item
       }));
