@@ -1,5 +1,5 @@
 {
-  "name": "iconik-proxy-migrator",
+  "name": "iconik-storage-migrator",
   "version": "1.0.0",
   "description": "Migrates proxies in Iconik to another storage location",
   "scripts": {
@@ -8,19 +8,19 @@
     "build": "tsc",
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
-    "docker:build": "docker build -t iconik-proxy-migrator .",
-    "docker:run": "docker run -d -p 3000:3000 --name iconik-proxy-migrator iconik-proxy-migrator",
+    "docker:build": "docker build -t iconik-storage-migrator .",
+    "docker:run": "docker run -d -p 3000:3000 --name iconik-storage-migrator iconik-storage-migrator",
     "postdocker:build": "docker image prune -f --filter label=stage=intermediate"
   },
   "author": "John Arrandale",
   "license": "ISC",
-  "homepage": "https://github.com/bootsie123/iconik-proxy-migrator",
+  "homepage": "https://github.com/bootsie123/iconik-storage-migrator",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bootsie123/iconik-proxy-migrator.git"
+    "url": "git+https://github.com/bootsie123/iconik-storage-migrator.git"
   },
   "bugs": {
-    "url": "https://github.com/bootsie123/iconik-proxy-migrator/issues"
+    "url": "https://github.com/bootsie123/iconik-storage-migrator/issues"
   },
   "keywords": [
     "iconik",

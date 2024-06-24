@@ -7,7 +7,7 @@ const logger = createLogger({
   level: "info",
   format: format.json(),
   defaultMeta: {
-    service: "iconik-proxy-migrator"
+    service: "iconik-storage-migrator"
   },
   transports: []
 });

@@ -1,5 +1,5 @@
 {
-  "name": "Iconik Proxy Migrator",
+  "name": "Iconik Storage Migrator",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
   "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
   "customizations": {
