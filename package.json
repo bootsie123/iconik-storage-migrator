@@ -56,7 +56,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "fast-safe-stringify": "^2.1.1",
-    "iconik-typescript": "^0.0.1",
+    "iconik-typescript": "^0.0.2",
     "node-fetch": "^2.7.0",
     "winston": "^3.13.0"
   },
