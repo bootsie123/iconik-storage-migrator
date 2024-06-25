@@ -9,6 +9,9 @@ on:
     branches:
       - "main"
 
+permissions:
+  packages: write
+
 env:
   REGISTRY: ghcr.io
   REGISTRY_USERNAME: ${{ github.actor }}
