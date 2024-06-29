@@ -64,8 +64,8 @@ export default class QueueService {
 
     app.use("/status", serverAdapter.getRouter());
 
-    app.listen(3000, () => {
-      this.logger.info("Running Bull-Board on port 3000");
+    app.listen(environment.bullmq.port, () => {
+      this.logger.info(`Running dashboard on port ${environment.bullmq.port}`);
     });
   }
 

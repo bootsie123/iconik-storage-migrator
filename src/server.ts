@@ -16,7 +16,7 @@ for (let i = 0; i < cores; i++) {
   workers.push(
     new Worker(
       environment.bullmq.queueName,
-      path.join(__dirname, "/workers/proxyStorageMigration.js"),
+      path.join(__dirname, "/workers/proxyMigration.js"),
       {
         connection: environment.redis,
         concurrency: environment.concurrency,

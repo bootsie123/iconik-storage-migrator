@@ -10,7 +10,9 @@ services:
   app:
     build:
       context: ./
-      target: development
+      target: production
+    depends_on:
+      - redis
     environment:
       ICONIK_APP_ID:
       ICONIK_TOKEN:

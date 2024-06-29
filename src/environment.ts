@@ -8,7 +8,11 @@ export default {
     newStorageId: process.env.NEW_STORAGE_ID || ""
   },
   redis: {
-    host: process.env.REDIS_HOST || "localhost",
+    host:
+      process.env.REDIS_HOST === undefined &&
+      process.env.NODE_ENV === "production"
+        ? "redis"
+        : process.env.REDIS_HOST || "localhost",
     port: parseInt(process.env.REDIS_PORT || "6379")
   },
   addJobs:
