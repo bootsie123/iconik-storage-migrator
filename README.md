@@ -63,7 +63,7 @@ In order to run the app, the following configuration options must be set in the 
 | REDIS_HOST\*   | String | localhost | The ip address or correction URL to use for Redis |
 | REDIS_PORT\*   | Number | 6379      | The port to use for Redis                         |
 
-_Only needed if specifically running locally_
+_\*Only needed if specifically running locally_
 
 ### Application Settings
 
