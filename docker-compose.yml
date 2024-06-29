@@ -15,12 +15,6 @@ services:
       ICONIK_APP_ID:
       ICONIK_TOKEN:
       NEW_STORAGE_ID:
-      ADD_JOBS:
-      REDIS_HOST: localhost
-      REDIS_PORT:
-      BULLMQ_PORT:
-      BULLMQ_RESET_QUEUES:
-      DRY_RUN: false
     ports:
       - "3000:3000"
     networks:

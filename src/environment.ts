@@ -19,7 +19,7 @@ export default {
       ? process.env.NODE_ENV !== "production"
       : process.env.DRY_RUN === "true",
   bullmq: {
-    queueName: "proxyStorageMigration",
+    queueName: "Proxy Migration",
     resetQueues:
       process.env.BULLMQ_RESET_QUEUES === undefined
         ? false

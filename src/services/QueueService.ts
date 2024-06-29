@@ -8,7 +8,8 @@ import { ExpressAdapter } from "@bull-board/express";
 
 import environment from "../environment";
 import logger from "../logger";
-import RateLimitMiddleware from "../utils/RateLimitMiddleware";
+import RateLimitMiddleware from "../middleware/RateLimitMiddleware";
+import { ResponseMiddleware } from "../middleware/ResponseMiddleware";
 
 export default class QueueService {
   private static logger = logger.child({ label: "QueueService" });
@@ -30,7 +31,7 @@ export default class QueueService {
         appId: environment.iconik.appId,
         authToken: environment.iconik.token
       },
-      promiseMiddleware: [new RateLimitMiddleware()]
+      promiseMiddleware: [new RateLimitMiddleware(), new ResponseMiddleware()]
     })
   );
 
@@ -51,7 +52,12 @@ export default class QueueService {
 
     createBullBoard({
       queues: [new BullMQAdapter(this.queue)],
-      serverAdapter
+      serverAdapter,
+      options: {
+        uiConfig: {
+          boardTitle: "Iconik Migrator"
+        }
+      }
     });
 
     const app = express();
@@ -70,8 +76,6 @@ export default class QueueService {
 
     const promises: Promise<Job<any, any, string>[]>[] = [];
 
-    const itemsPerPage = 150;
-
     const options = {
       query: `_exists_:proxies.status AND NOT proxies.storage_id:"${environment.iconik.newStorageId}"`,
       includeFields: [
@@ -87,7 +91,8 @@ export default class QueueService {
           name: "date_created",
           order: "desc"
         }
-      ]
+      ],
+      searchAfter: []
     };
 
     const addJobs = (data: iconik.SearchDocumentsSchema) => {
@@ -99,40 +104,29 @@ export default class QueueService {
       return this.queue.addBulk(jobs || []);
     };
 
-    const data = await this.searchApi.searchV1SearchPost(
-      options,
-      undefined,
-      undefined,
-      itemsPerPage,
-      undefined,
-      undefined,
-      undefined,
-      false,
-      false,
-      false
-    );
-
-    promises.push(addJobs(data));
-
-    for (let page = 2; page <= (data.pages || 1); page++) {
-      promises.push(
-        new Promise<Job<any, any, string>[]>(async resolve => {
-          const data = await this.searchApi.searchV1SearchPost(
-            options,
-            undefined,
-            undefined,
-            itemsPerPage,
-            page,
-            undefined,
-            undefined,
-            false,
-            false,
-            false
-          );
-
-          resolve(addJobs(data));
-        })
+    while (true) {
+      const res = await this.searchApi.searchV1SearchPostWithHttpInfo(
+        options,
+        undefined,
+        undefined,
+        150,
+        1,
+        undefined,
+        undefined,
+        false,
+        false,
+        false
       );
+
+      const data = res.data;
+
+      promises.push(addJobs(data));
+
+      if (!data.objects || data.objects.length == 0) break;
+
+      const rawData = JSON.parse(await res.body.text());
+
+      options.searchAfter = rawData.objects[rawData.objects.length - 1]._sort;
     }
 
     const results = await Promise.allSettled(promises);
