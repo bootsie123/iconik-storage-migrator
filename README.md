@@ -1,5 +1,9 @@
 # Iconik Storage Migrator
 
+[![Docker Publish](https://github.com/bootsie123/iconik-storage-migrator/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/bootsie123/iconik-storage-migrator/actions/workflows/docker-publish.yml)
+[![Version](https://img.shields.io/github/package-json/v/bootsie123/iconik-storage-migrator)](https://github.com/bootsie123/iconik-storage-migrator/blob/main/package.json)
+[![License](https://img.shields.io/github/license/bootsie123/iconik-storage-migrator)](https://github.com/bootsie123/iconik-storage-migrator/blob/main/LICENSE)
+
 Allows for seamless migration of different object types in Iconik to different storage locations.
 
 Simply install the application locally or with [Docker Compose](https://docs.docker.com/compose/), configure the settings to your liking, and watch it go with the included dashboard!
