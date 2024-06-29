@@ -2,7 +2,7 @@ services:
   redis:
     image: bitnami/redis:latest
     volumes:
-      - redis_data:/bitnami/redis/data
+      - redis-data:/bitnami/redis/data
     environment:
       ALLOW_EMPTY_PASSWORD: yes
     ports:
@@ -26,4 +26,4 @@ services:
       - "3000:3000"
 
 volumes:
-  redis_data:
+  redis-data:
