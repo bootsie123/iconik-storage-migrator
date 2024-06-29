@@ -124,4 +124,4 @@ Pull requests are welcome. Any changes are appreciated!
 
 ## License
 
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
+This project is licensed under the [ISC License]([https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/isc/))
