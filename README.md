@@ -55,13 +55,13 @@ nano docker-compose.yml
 
 In order to run the app, the following configuration options must be set in the `.env` file or within `docker-compose.yml`.
 
-| Name           | Type   | Default   | Description                                       |
-| -------------- | ------ | --------- | ------------------------------------------------- |
-| ICONIK_APP_ID  | String |           | The ID of the Iconik application token to use     |
-| ICONIK_TOKEN   | String |           | The token of the Iconik application token to use  |
-| NEW_STORAGE_ID | String |           | The ID of the storage location to migrate to      |
-| REDIS_HOST\*   | String | localhost | The ip address or correction URL to use for Redis |
-| REDIS_PORT\*   | Number | 6379      | The port to use for Redis                         |
+| Name           | Type   | Default                                      | Description                                       |
+| -------------- | ------ | -------------------------------------------- | ------------------------------------------------- |
+| ICONIK_APP_ID  | String |                                              | The ID of the Iconik application token to use     |
+| ICONIK_TOKEN   | String |                                              | The token of the Iconik application token to use  |
+| NEW_STORAGE_ID | String |                                              | The ID of the storage location to migrate to      |
+| REDIS_HOST\*   | String | `redis` if production, otherwise `localhost` | The ip address or correction URL to use for Redis |
+| REDIS_PORT\*   | Number | 6379                                         | The port to use for Redis                         |
 
 _\*Only needed if specifically running locally_
 
