@@ -8,9 +8,7 @@ services:
     networks:
       - app-network
   app:
-    build:
-      context: ./
-      target: production
+    image: "ghcr.io/bootsie123/iconik-storage-migrator:latest"
     depends_on:
       - redis
     environment:
