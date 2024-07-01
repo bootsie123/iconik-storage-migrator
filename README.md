@@ -118,10 +118,16 @@ To see all logs, simply run:
 docker compose logs -f
 ```
 
+## Screenshots
+
+![](docs/screenshot1.png)
+![](docs/screenshot2.png)
+![](docs/screenshot3.png)
+
 ## Contributing
 
 Pull requests are welcome. Any changes are appreciated!
 
 ## License
 
-This project is licensed under the [ISC License]([https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/isc/))
+This project is licensed under the [ISC License](<[https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/isc/)>)
